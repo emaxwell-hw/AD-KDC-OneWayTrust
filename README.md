@@ -1,4 +1,4 @@
-# Confguring One Way Trust Between MIT KDC and AD
+# One Way Trust Between MIT KDC and AD
 Many security environments have strict policies on allowing administrative access to Active Directory. Some performance issues can also require that Hadoop cluster principals for Kerberos are not created directly in AD. To aid in these situations, it may be preferable to use a local MIT KDC in the Hadoop cluster to manage service principals while using a one-way trust to allow AD users to utilze the Hadoop environment. This tutorial describes the steps necessary to create such a trust.
 
 The following assumptions are made for this tutorial:
@@ -54,7 +54,7 @@ kinit admin/admin@SEC11.HORTONWORKS.COM
 kadmin -q "addprinc krbtgt/SEC11.HORTONWORKS.COM@LAB.HORTONWORKS.NET"
 ```
 ## Step 4: Configure AUTH_TO_LOCAL
-The Hadoop auth_to_local parameter must be changed to properly convert user principals from the AD domain to usable usernames in the Hadoop cluster. In Ambari, add the following rules to the auth_to_local variable in HDFS -> Configs -> Advanced
+The Hadoop auth_to_local parameter must be changed to properly convert user principals from the AD domain to usable usernames in the Hadoop cluster. In Ambari, add the following rules to the auth_to_local variable in HDFS -> Configs -> Advanced -> Advanced core-site.xml -> hadoop.security.auth_to_local
 ```
 RULE:[1:$1@$0](^.*@AD\.HORTONWORKS\.COM$)s/^(.*)@AD\.HORTONWORKS\.COM$/$1/g
 RULE:[2:$1@$0](^.*@AD\.HORTONWORKS\.COM$)s/^(.*)@AD\.HORTONWORKS\.COM$/$1/g
