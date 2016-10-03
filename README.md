@@ -31,9 +31,7 @@ ksetup /SetEncTypeAttr HDP.HORTONWORKS.COM AES256-CTS-HMAC-SHA1-96 AES128-CTS-HM
 By default, all of the encryption types are accepted by the MIT KDC. If security concerns require that the encryption types be limited, this is done in the `/etc/krb5.conf` file:
 ```
 [libdefaults]
-default_tkt_enctypes = aes256-‐cts aes128-‐cts rc4-‐hmac arcfour-‐hmac-‐md5 des-‐cbc-‐md5 des-‐cbc-‐crc
-default_tgs_enctypes = aes256-‐cts aes128-‐cts rc4-‐hmac arcfour-‐hmac-‐md5 des-‐cbc-‐md5 des-‐cbc-‐crc
-permitted_enctypes = aes256-‐cts aes128-‐cts rc4-‐hmac arcfour-‐hmac-‐md5 des-‐ cbc-‐md5 des-‐cbc-‐crc
+permitted_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 arcfour-hmac-md5 des-cbc-crc des-cbc-md5
 ```
 
 ## Step 3: Enable Trust in MIT KDC
