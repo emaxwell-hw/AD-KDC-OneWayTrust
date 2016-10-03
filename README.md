@@ -54,8 +54,8 @@ AD.HORTONWORKS.COM = {
 ###Create Trust User
 In order for the trust to work, a principal combining the realms in the trust must be created in the MIT KDC. The password for this user must be the same as the password used to create the trust on the AD server:
 ```
-kinit admin/admin@SEC11.HORTONWORKS.COM
-kadmin -q "addprinc krbtgt/SEC11.HORTONWORKS.COM@LAB.HORTONWORKS.NET"
+kinit admin/admin@HDP.HORTONWORKS.COM
+kadmin -q "addprinc krbtgt/HDP.HORTONWORKS.COM@AD.HORTONWORKS.COM"
 ```
 ## Step 4: Configure AUTH_TO_LOCAL
 The Hadoop auth_to_local parameter must be changed to properly convert user principals from the AD domain to usable usernames in the Hadoop cluster. In Ambari, add the following rules to the auth_to_local variable in HDFS -> Configs -> Advanced -> Advanced core-site.xml -> hadoop.security.auth_to_local
